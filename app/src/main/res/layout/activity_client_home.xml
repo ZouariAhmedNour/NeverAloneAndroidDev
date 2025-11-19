@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primaryLight"
+    android:padding="16dp"
+    tools:context=".ClientHomeActivity">
+
+    <!-- Utilisation du GridLayout moderne centré -->
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:columnCount="2"
+        app:useDefaultMargins="true"
+        app:alignmentMode="alignBounds"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Card 1 : Gérer réservations -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardReservations"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Icône pour les réservations (assumée être un Vector Asset) -->
+                <ImageView
+                    android:id="@+id/iconReservations"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/ic_reservation"
+                    android:scaleType="fitCenter"
+                    android:tint="@color/primary"
+                    android:contentDescription="@string/cd_reservations" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gérer réservations"
+                    android:layout_marginTop="12dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/primaryDark"
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- Card 2 : Gérer profil -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Icône pour le profil (assumée être un Vector Asset) -->
+                <ImageView
+                    android:id="@+id/iconProfile"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/ic_profile"
+                    android:scaleType="fitCenter"
+                    android:tint="@color/primary"
+                    android:contentDescription="@string/cd_profile" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gérer profil"
+                    android:layout_marginTop="12dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/primaryDark"
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card 3 (Nouvelle) : Chercher services -->
+        <!-- Note: Vous devez ajouter le drawable ic_search et la string cd_search -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Icône pour la recherche (assumée être un Vector Asset) -->
+                <ImageView
+                    android:id="@+id/iconSearch"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/ic_search"
+                    android:scaleType="fitCenter"
+                    android:tint="@color/primary"
+                    android:contentDescription="@string/cd_search" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chercher services"
+                    android:layout_marginTop="12dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/primaryDark"
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- Card 4 (Nouvelle) : Évaluer un prestataire -->
+        <!-- Note: Vous devez ajouter le drawable ic_review et la string cd_review -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardReview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            android:focusable="true"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Icône pour l'évaluation (assumée être un Vector Asset) -->
+                <ImageView
+                    android:id="@+id/iconReview"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/ic_review"
+                    android:scaleType="fitCenter"
+                    android:tint="@color/primary"
+                    android:contentDescription="@string/cd_review" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Évaluer prestataire"
+                    android:layout_marginTop="12dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/primaryDark"
+                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.gridlayout.widget.GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
