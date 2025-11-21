@@ -5,11 +5,36 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryLight"
+    android:background="#E3F2FD"
     android:padding="16dp"
     tools:context=".ClientHomeActivity">
 
-    <!-- Utilisation du GridLayout moderne centré -->
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        app:title="Menu principal"
+        app:titleTextColor="@color/primaryDark"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Icône logout à droite -->
+        <ImageView
+            android:id="@+id/icLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_logout"
+            android:contentDescription="@string/cd_logout"
+            android:padding="8dp"
+            android:layout_gravity="end|center_vertical"
+            android:clickable="true"
+            android:focusable="true"/>
+    </androidx.appcompat.widget.Toolbar>
+
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,7 +73,6 @@
                     android:layout_height="64dp"
                     android:src="@drawable/ic_reservation"
                     android:scaleType="fitCenter"
-                    android:tint="@color/primary"
                     android:contentDescription="@string/cd_reservations" />
 
                 <TextView
@@ -90,7 +114,6 @@
                     android:layout_height="64dp"
                     android:src="@drawable/ic_profile"
                     android:scaleType="fitCenter"
-                    android:tint="@color/primary"
                     android:contentDescription="@string/cd_profile" />
 
                 <TextView
@@ -132,7 +155,6 @@
                     android:layout_height="64dp"
                     android:src="@drawable/ic_search"
                     android:scaleType="fitCenter"
-                    android:tint="@color/primary"
                     android:contentDescription="@string/cd_search" />
 
                 <TextView
@@ -175,7 +197,6 @@
                     android:layout_height="64dp"
                     android:src="@drawable/ic_review"
                     android:scaleType="fitCenter"
-                    android:tint="@color/primary"
                     android:contentDescription="@string/cd_review" />
 
                 <TextView

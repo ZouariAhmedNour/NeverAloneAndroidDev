@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">NeverAlone</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="cd_reservations">Icône réservations</string>
+    <string name="cd_profile">Icône profil</string>
+    <string name="cd_search">Icône recherche</string>
+    <string name="cd_review">Icône évaluation</string>
+    <string name="cd_logout">Icône logout</string>
+
+
 </resources>

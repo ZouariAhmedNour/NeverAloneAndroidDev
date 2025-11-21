@@ -2,24 +2,24 @@ package epi.projet.neveralone
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
+import epi.projet.neveralone.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val btnLogin = findViewById<Button>(R.id.btnLogin)
-        val tvSignup = findViewById<TextView>(R.id.tvSignup)
-
-
-        btnLogin.setOnClickListener {
+        // Bouton "Se connecter"
+        binding.btnLogin.setOnClickListener {
 
             val isProvider = false
+
             if (isProvider) {
                 startActivity(Intent(this, ProviderHomeActivity::class.java))
             } else {
@@ -27,7 +27,8 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
-        tvSignup.setOnClickListener {
+        // Texte "Pas de compte ? S'inscrire"
+        binding.tvSignup.setOnClickListener {
             startActivity(Intent(this, SignupActivity::class.java))
         }
     }
