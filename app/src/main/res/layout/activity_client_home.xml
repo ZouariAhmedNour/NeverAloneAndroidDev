@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E3F2FD"
-    android:padding="16dp"
+    android:background="@color/background"
+    android:padding="0dp"
     tools:context=".ClientHomeActivity">
 
-    <!-- Toolbar -->
+    <!-- Toolbar (inchangée visuellement, garde le logout ImageView) -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
@@ -22,7 +23,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Icône logout à droite -->
         <ImageView
             android:id="@+id/icLogout"
             android:layout_width="wrap_content"
@@ -35,182 +35,358 @@
             android:focusable="true"/>
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.gridlayout.widget.GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:columnCount="2"
-        app:useDefaultMargins="true"
-        app:alignmentMode="alignBounds"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- Contenu scrollable vertical -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@id/bottomNav"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Card 1 : Gérer réservations -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardReservations"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            android:focusable="true"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:orientation="vertical"
+            android:padding="16dp">
 
+            <!-- Section: Services offerts (titre + chevron) -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="24dp">
-
-                <!-- Icône pour les réservations (assumée être un Vector Asset) -->
-                <ImageView
-                    android:id="@+id/iconReservations"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/ic_reservation"
-                    android:scaleType="fitCenter"
-                    android:contentDescription="@string/cd_reservations" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:paddingBottom="8dp">
 
                 <TextView
+                    android:id="@+id/titleServices"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Services offerts"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/textPrimary"/>
+
+                <ImageView
+                    android:id="@+id/btnMoreServices"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_chevron_right"
+                    android:contentDescription="Voir tous les services"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
+
+            <!-- Scroll horizontal des cards Services -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="always"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/servicesContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gérer réservations"
-                    android:layout_marginTop="12dp"
-                    android:textAlignment="center"
-                    android:textColor="@color/primaryDark"
-                    android:textAppearance="?attr/textAppearanceSubtitle1" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                    android:orientation="horizontal">
 
+                    <!-- Card service 1 -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="260dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
 
-        <!-- Card 2 : Gérer profil -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardProfile"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            android:focusable="true"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="140dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/jardinage" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="Jardinage - tonte, taille..."
+                                android:textAppearance="?attr/textAppearanceBody1"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:orientation="horizontal"
+                                android:gravity="end">
+
+                                <Button
+                                    android:id="@+id/btnReserve_jardinage"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Réserver"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Card service 2 -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="260dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="140dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/outdooract" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="Activités extérieures"
+                                android:textAppearance="?attr/textAppearanceBody1"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:orientation="horizontal"
+                                android:gravity="end">
+
+                                <Button
+                                    android:id="@+id/btnReserve_outdoor"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Réserver"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Card service 3 -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="260dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="140dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/painting" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="Peinture et décoration"
+                                android:textAppearance="?attr/textAppearanceBody1"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:orientation="horizontal"
+                                android:gravity="end">
+
+                                <Button
+                                    android:id="@+id/btnReserve_painting"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Réserver"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Séparateur -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
+
+            <!-- Section: Prestataires -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="24dp">
-
-                <!-- Icône pour le profil (assumée être un Vector Asset) -->
-                <ImageView
-                    android:id="@+id/iconProfile"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/ic_profile"
-                    android:scaleType="fitCenter"
-                    android:contentDescription="@string/cd_profile" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingTop="4dp"
+                android:paddingBottom="8dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/titleProviders"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Gérer profil"
-                    android:layout_marginTop="12dp"
-                    android:textAlignment="center"
-                    android:textColor="@color/primaryDark"
-                    android:textAppearance="?attr/textAppearanceSubtitle1" />
+                    android:text="Prestataires"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/textPrimary"/>
+
+                <ImageView
+                    android:id="@+id/btnMoreProviders"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_chevron_right"
+                    android:contentDescription="Voir tous les prestataires"
+                    android:clickable="true"
+                    android:focusable="true"/>
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <!-- Card 3 (Nouvelle) : Chercher services -->
-        <!-- Note: Vous devez ajouter le drawable ic_search et la string cd_search -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardSearch"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            android:focusable="true"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
-
-            <LinearLayout
+            <!-- Scroll horizontal des cards Prestataires -->
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="24dp">
+                android:layout_height="wrap_content"
+                android:overScrollMode="always"
+                android:scrollbars="none">
 
-                <!-- Icône pour la recherche (assumée être un Vector Asset) -->
-                <ImageView
-                    android:id="@+id/iconSearch"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/ic_search"
-                    android:scaleType="fitCenter"
-                    android:contentDescription="@string/cd_search" />
-
-                <TextView
+                <LinearLayout
+                    android:id="@+id/providersContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chercher services"
-                    android:layout_marginTop="12dp"
-                    android:textAlignment="center"
-                    android:textColor="@color/primaryDark"
-                    android:textAppearance="?attr/textAppearanceSubtitle1" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                    android:orientation="horizontal">
 
+                    <!-- Provider card 1 -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
 
-        <!-- Card 4 (Nouvelle) : Évaluer un prestataire -->
-        <!-- Note: Vous devez ajouter le drawable ic_review et la string cd_review -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardReview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="8dp"
-            android:focusable="true"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="24dp">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="140dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/soc1" />
 
-                <!-- Icône pour l'évaluation (assumée être un Vector Asset) -->
-                <ImageView
-                    android:id="@+id/iconReview"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/ic_review"
-                    android:scaleType="fitCenter"
-                    android:contentDescription="@string/cd_review" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="Société Jardin et Co — Entretien espaces verts"
+                                android:textAppearance="?attr/textAppearanceBody1"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Évaluer prestataire"
-                    android:layout_marginTop="12dp"
-                    android:textAlignment="center"
-                    android:textColor="@color/primaryDark"
-                    android:textAppearance="?attr/textAppearanceSubtitle1" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:orientation="horizontal"
+                                android:gravity="end">
 
+                                <Button
+                                    android:id="@+id/btnDetails_soc1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Détails"/>
 
-    </androidx.gridlayout.widget.GridLayout>
+                                <Button
+                                    android:id="@+id/btnEvaluate_soc1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Évaluer"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Provider card 2 -->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="12dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="140dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/soc2" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:text="Société PeinturePro — Rénovation peinture"
+                                android:textAppearance="?attr/textAppearanceBody1"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="8dp"
+                                android:orientation="horizontal"
+                                android:gravity="end">
+
+                                <Button
+                                    android:id="@+id/btnDetails_soc2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Détails"/>
+
+                                <Button
+                                    android:id="@+id/btnEvaluate_soc2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:text="Évaluer"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- ajout d'autres cards si besoin... -->
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- espace bottom -->
+            <View android:layout_width="match_parent" android:layout_height="24dp"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom navigation (remplace ton GridLayout) -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/primary"
+        app:itemTextColor="@color/primary"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
