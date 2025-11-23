@@ -21,5 +21,17 @@ class ClientHomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnEvaluateSoc1.setOnClickListener {
+            val intent = Intent(this, RateProviderActivity::class.java)
+            intent.putExtra("nom_societe", "Société Jardin et Co")
+            startActivity(intent)
+        }
+
+        binding.btnEvaluateSoc2.setOnClickListener {
+            val intent = Intent(this, RateProviderActivity::class.java)
+            intent.putExtra("nom_societe", "Société PeinturePro")
+            startActivity(intent)
+        }
+
     }
 }
