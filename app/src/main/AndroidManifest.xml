@@ -12,6 +12,9 @@
         android:theme="@style/Theme.NeverAlone"
         android:windowSoftInputMode="adjustResize">
         <activity
+            android:name=".ListeServiceActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListeSocActivity"
             android:exported="false" />
         <activity
