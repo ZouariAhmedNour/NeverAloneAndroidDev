@@ -49,5 +49,7 @@ class RateProviderActivity : AppCompatActivity() {
                 }
                 .show()
         }
+
+        BottomNavHelper.setupNavigation(this, binding.bottomNav)
     }
 }

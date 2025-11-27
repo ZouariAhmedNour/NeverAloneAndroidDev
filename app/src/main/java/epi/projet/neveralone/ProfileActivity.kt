@@ -1,20 +1,41 @@
 package epi.projet.neveralone
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import epi.projet.neveralone.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityProfileBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_profile)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        binding = ActivityProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // Clique sur modifier
+        binding.btnModifierProfile.setOnClickListener {
+            val nom = binding.etNomProfile.text.toString()
+            val prenom = binding.etPrenomProfile.text.toString()
+            val pwd = binding.etPasswordProfile.text.toString()
+            val confirm = binding.etConfirmPasswordProfile.text.toString()
+
+            if (pwd != confirm) {
+                Toast.makeText(this, "Les mots de passe ne correspondent pas", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            Toast.makeText(this, "Profil modifié avec succès", Toast.LENGTH_SHORT).show()
+        }
+
+        BottomNavHelper.setupNavigation(this, binding.bottomNav)
+        binding.bottomNav.selectedItemId = R.id.nav_profile
+
+
+        binding.topAppBar.setNavigationOnClickListener {
+            finish()
         }
     }
 }

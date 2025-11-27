@@ -18,11 +18,18 @@ class ListeServiceActivity : AppCompatActivity() {
         val listeServices = listOf(
             Service(R.drawable.jardinage, "Jardinage", "Tonte, taille, entretien"),
             Service(R.drawable.outdooract, "Activités extérieures", "Promenade, sorties"),
-            Service(R.drawable.painting, "Peinture", "Décoration, rénovation")
+            Service(R.drawable.painting, "Peinture", "Décoration, rénovation"),
+            Service(R.drawable.toilettage, "Toilettage", "Soins")
         )
 
         // Config RecyclerView
         binding.recyclerServices.layoutManager = LinearLayoutManager(this)
         binding.recyclerServices.adapter = ServiceAdapter(listeServices)
+
+        binding.topAppBar.setNavigationOnClickListener {
+            finish()
+        }
+
+        BottomNavHelper.setupNavigation(this, binding.bottomNav)
     }
 }

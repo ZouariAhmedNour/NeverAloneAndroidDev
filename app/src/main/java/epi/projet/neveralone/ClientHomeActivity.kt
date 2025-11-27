@@ -33,5 +33,47 @@ class ClientHomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.btnMoreServices.setOnClickListener {
+            val intent = Intent(this, ListeServiceActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnReserveJardinage.setOnClickListener {
+            val intent = Intent(this, ReservationsActivity::class.java)
+            intent.putExtra("serviceName", "Jardinage")
+            intent.putExtra("imageRes", R.drawable.jardinage)
+            startActivity(intent)
+        }
+
+// Outdoor
+        binding.btnReserveOutdoor.setOnClickListener {
+            val intent = Intent(this, ReservationsActivity::class.java)
+            intent.putExtra("serviceName", "Activités extérieures")
+            intent.putExtra("imageRes", R.drawable.outdooract)
+            startActivity(intent)
+        }
+
+// Painting
+        binding.btnReservePainting.setOnClickListener {
+            val intent = Intent(this, ReservationsActivity::class.java)
+            intent.putExtra("serviceName", "Peinture et décoration")
+            intent.putExtra("imageRes", R.drawable.painting)
+            startActivity(intent)
+        }
+
+        binding.bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.ic_resa -> {
+                    startActivity(Intent(this, MesResasActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
+
+        BottomNavHelper.setupNavigation(this, binding.bottomNav)
+        binding.bottomNav.selectedItemId = R.id.nav_home
+
+
     }
 }

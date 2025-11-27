@@ -30,5 +30,7 @@ class ListeSocActivity : AppCompatActivity() {
         // RecyclerView
         binding.recyclerViewSoc.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewSoc.adapter = SocieteAdapter(societes)
+
+        BottomNavHelper.setupNavigation(this, binding.bottomNav)
     }
 }

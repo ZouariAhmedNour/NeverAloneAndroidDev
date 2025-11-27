@@ -17,4 +17,6 @@ class ServiceDetailsActivity : AppCompatActivity() {
             insets
         }
     }
+
+
 }
