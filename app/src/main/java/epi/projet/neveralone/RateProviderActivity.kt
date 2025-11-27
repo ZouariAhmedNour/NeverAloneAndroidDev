@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import epi.projet.neveralone.databinding.ActivityRateProviderBinding
 
 class RateProviderActivity : AppCompatActivity() {
@@ -22,6 +23,8 @@ class RateProviderActivity : AppCompatActivity() {
         supportActionBar?.title = "Évaluer prestataire"
 
         binding.toolbarRate.setNavigationOnClickListener { finish() }
+
+
 
         // Nom de la société (si tu veux l'afficher plus tard)
         val nomSoc = intent.getStringExtra("nom_societe")

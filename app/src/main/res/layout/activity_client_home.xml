@@ -10,12 +10,12 @@
     android:padding="0dp"
     tools:context=".ClientHomeActivity">
 
-    <!-- Toolbar (inchangée visuellement, garde le logout ImageView) -->
+    <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="#FFFFFF"
+        android:background="@color/white"
         android:elevation="4dp"
         app:title="Menu principal"
         app:titleTextColor="@color/primaryDark"
@@ -84,7 +84,10 @@
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="always"
+                android:clipToPadding="false"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:overScrollMode="never"
                 android:scrollbars="none">
 
                 <LinearLayout
@@ -94,12 +97,15 @@
                     android:orientation="horizontal">
 
                     <!-- Card service 1 -->
-                    <androidx.cardview.widget.CardView
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="260dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="12dp"
                         app:cardCornerRadius="12dp"
-                        app:cardElevation="6dp">
+                        app:cardElevation="6dp"
+                        app:cardUseCompatPadding="true"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardBackgroundColor="@color/white">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -108,7 +114,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="140dp"
+                                android:layout_height="150dp"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/jardinage" />
 
@@ -126,22 +132,27 @@
                                 android:orientation="horizontal"
                                 android:gravity="end">
 
-                                <Button
+                                <com.google.android.material.button.MaterialButton
                                     android:id="@+id/btnReserve_jardinage"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Réserver"/>
+                                    android:text="RÉSERVER"
+                                    app:cornerRadius="8dp"
+                                    style="@style/Widget.MaterialComponents.Button" />
                             </LinearLayout>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                    </com.google.android.material.card.MaterialCardView>
 
                     <!-- Card service 2 -->
-                    <androidx.cardview.widget.CardView
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="260dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="12dp"
                         app:cardCornerRadius="12dp"
-                        app:cardElevation="6dp">
+                        app:cardElevation="6dp"
+                        app:cardUseCompatPadding="true"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardBackgroundColor="@color/white">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -150,7 +161,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="140dp"
+                                android:layout_height="150dp"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/outdooract" />
 
@@ -159,7 +170,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="8dp"
                                 android:text="Activités extérieures"
-                                android:textAppearance="?attr/textAppearanceBody1"/>
+                                android:textAppearance="?attr/textAppearanceBody1" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -168,22 +179,27 @@
                                 android:orientation="horizontal"
                                 android:gravity="end">
 
-                                <Button
+                                <com.google.android.material.button.MaterialButton
                                     android:id="@+id/btnReserve_outdoor"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Réserver"/>
+                                    android:text="RÉSERVER"
+                                    app:cornerRadius="8dp"
+                                    style="@style/Widget.MaterialComponents.Button" />
                             </LinearLayout>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                    </com.google.android.material.card.MaterialCardView>
 
                     <!-- Card service 3 -->
-                    <androidx.cardview.widget.CardView
+                    <com.google.android.material.card.MaterialCardView
                         android:layout_width="260dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="12dp"
                         app:cardCornerRadius="12dp"
-                        app:cardElevation="6dp">
+                        app:cardElevation="6dp"
+                        app:cardUseCompatPadding="true"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardBackgroundColor="@color/white">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -192,7 +208,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="140dp"
+                                android:layout_height="150dp"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/painting" />
 
@@ -201,7 +217,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="8dp"
                                 android:text="Peinture et décoration"
-                                android:textAppearance="?attr/textAppearanceBody1"/>
+                                android:textAppearance="?attr/textAppearanceBody1" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -210,14 +226,16 @@
                                 android:orientation="horizontal"
                                 android:gravity="end">
 
-                                <Button
+                                <com.google.android.material.button.MaterialButton
                                     android:id="@+id/btnReserve_painting"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Réserver"/>
+                                    android:text="RÉSERVER"
+                                    app:cornerRadius="8dp"
+                                    style="@style/Widget.MaterialComponents.Button" />
                             </LinearLayout>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                    </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
             </HorizontalScrollView>
@@ -255,11 +273,19 @@
                     android:focusable="true"/>
             </LinearLayout>
 
-            <!-- Scroll horizontal des cards Prestataires -->
+
+
+
+
+
+            <!-- Scroll horizontal des cards Prestataires (corrigé) -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="always"
+                android:clipToPadding="false"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:overScrollMode="never"
                 android:scrollbars="none">
 
                 <LinearLayout
@@ -269,12 +295,15 @@
                     android:orientation="horizontal">
 
                     <!-- Provider card 1 -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="320dp"
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="260dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="12dp"
                         app:cardCornerRadius="12dp"
-                        app:cardElevation="6dp">
+                        app:cardElevation="6dp"
+                        app:cardUseCompatPadding="true"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardBackgroundColor="@color/white">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -283,7 +312,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="140dp"
+                                android:layout_height="150dp"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/soc1" />
 
@@ -292,7 +321,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="8dp"
                                 android:text="Société Jardin et Co — Entretien espaces verts"
-                                android:textAppearance="?attr/textAppearanceBody1"/>
+                                android:textAppearance="?attr/textAppearanceBody1" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -301,29 +330,36 @@
                                 android:orientation="horizontal"
                                 android:gravity="end">
 
-                                <Button
+                                <com.google.android.material.button.MaterialButton
                                     android:id="@+id/btnDetails_soc1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Détails"/>
+                                    android:text="DÉTAILS"
+                                    app:cornerRadius="8dp"
+                                    style="@style/Widget.MaterialComponents.Button" />
 
-                                <Button
+                                <com.google.android.material.button.MaterialButton
                                     android:id="@+id/btnEvaluate_soc1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
-                                    android:text="Évaluer"/>
+                                    android:text="ÉVALUER"
+                                    app:cornerRadius="8dp"
+                                    style="@style/Widget.MaterialComponents.Button" />
                             </LinearLayout>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                    </com.google.android.material.card.MaterialCardView>
 
                     <!-- Provider card 2 -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="320dp"
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="260dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="12dp"
                         app:cardCornerRadius="12dp"
-                        app:cardElevation="6dp">
+                        app:cardElevation="6dp"
+                        app:cardUseCompatPadding="true"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardBackgroundColor="@color/white">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -332,7 +368,7 @@
 
                             <ImageView
                                 android:layout_width="match_parent"
-                                android:layout_height="140dp"
+                                android:layout_height="150dp"
                                 android:scaleType="centerCrop"
                                 android:src="@drawable/soc2" />
 
@@ -341,7 +377,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="8dp"
                                 android:text="Société PeinturePro — Rénovation peinture"
-                                android:textAppearance="?attr/textAppearanceBody1"/>
+                                android:textAppearance="?attr/textAppearanceBody1" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -350,33 +386,36 @@
                                 android:orientation="horizontal"
                                 android:gravity="end">
 
-                                <Button
+                                <com.google.android.material.button.MaterialButton
                                     android:id="@+id/btnDetails_soc2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Détails"/>
+                                    android:text="DÉTAILS"
+                                    app:cornerRadius="8dp"
+                                    style="@style/Widget.MaterialComponents.Button" />
 
-                                <Button
+                                <com.google.android.material.button.MaterialButton
                                     android:id="@+id/btnEvaluate_soc2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
-                                    android:text="Évaluer"/>
+                                    android:text="ÉVALUER"
+                                    app:cornerRadius="8dp"
+                                    style="@style/Widget.MaterialComponents.Button" />
                             </LinearLayout>
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- ajout d'autres cards si besoin... -->
+                    </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
             </HorizontalScrollView>
+
 
             <!-- espace bottom -->
             <View android:layout_width="match_parent" android:layout_height="24dp"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom navigation (remplace ton GridLayout) -->
+    <!-- Bottom navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
@@ -384,7 +423,7 @@
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/primary"
         app:itemTextColor="@color/primary"
-        android:background="@android:color/white"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
