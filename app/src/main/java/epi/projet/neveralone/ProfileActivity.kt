@@ -14,6 +14,9 @@ class ProfileActivity : AppCompatActivity() {
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.topAppBar.title = "Mon profil"
+        binding.topAppBar.setTitleTextColor(resources.getColor(android.R.color.white))
+
 
         // Clique sur modifier
         binding.btnModifierProfile.setOnClickListener {

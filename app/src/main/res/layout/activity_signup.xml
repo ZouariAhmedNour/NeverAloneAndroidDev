@@ -1,72 +1,141 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@color/background"
-    tools:context=".SignupActivity">
+    android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="24dp">
 
+        <!-- Logo -->
         <ImageView
             android:id="@+id/logoSignup"
-            android:src="@drawable/neveraloneapplogo"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:src="@drawable/neveraloneapplogo"
+            android:contentDescription="Logo NeverAlone"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"/>
+
+        <!-- Titre -->
+        <TextView
+            android:id="@+id/tvWelcomeSignup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Créer votre compte"
+            android:textSize="22sp"
+            android:textColor="@color/primaryDark"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@id/logoSignup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp"/>
 
         <!-- Nom -->
-        <EditText
-            android:id="@+id/etNom"
-            android:hint="Nom"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilNom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/logoSignup"
             android:layout_marginTop="24dp"
+            android:background="@drawable/bg_inputs_card"
+            android:padding="4dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxStrokeColor="@color/primary"
+            app:boxBackgroundMode="outline"
+            app:layout_constraintTop_toBottomOf="@id/tvWelcomeSignup"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etNom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nom"
+                android:padding="12dp"
+                android:background="@android:color/transparent"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Prénom -->
-        <EditText
-            android:id="@+id/etPrenom"
-            android:hint="Prénom"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPrenom"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/etNom"
             android:layout_marginTop="12dp"
+            android:background="@drawable/bg_inputs_card"
+            android:padding="4dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxStrokeColor="@color/primary"
+            app:boxBackgroundMode="outline"
+            app:layout_constraintTop_toBottomOf="@id/tilNom"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPrenom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Prénom"
+                android:padding="12dp"
+                android:background="@android:color/transparent"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Email -->
-        <EditText
-            android:id="@+id/etEmailSignup"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/etPrenom"
             android:layout_marginTop="12dp"
+            android:background="@drawable/bg_inputs_card"
+            android:padding="4dp"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxStrokeColor="@color/primary"
+            app:boxBackgroundMode="outline"
+            app:layout_constraintTop_toBottomOf="@id/tilPrenom"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Password -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmailSignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:background="@android:color/transparent"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Mot de passe -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:endIconMode="password_toggle"
-            app:layout_constraintTop_toBottomOf="@id/etEmailSignup"
             android:layout_marginTop="12dp"
+            android:background="@drawable/bg_inputs_card"
+            android:padding="4dp"
+            app:endIconMode="password_toggle"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxStrokeColor="@color/primary"
+            app:boxBackgroundMode="outline"
+            app:layout_constraintTop_toBottomOf="@id/tilEmail"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
@@ -75,18 +144,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Mot de passe"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:background="@android:color/transparent"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Confirm Password -->
+        <!-- Confirmer mot de passe -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilConfirmPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:endIconMode="password_toggle"
-            app:layout_constraintTop_toBottomOf="@id/tilPassword"
             android:layout_marginTop="12dp"
+            android:background="@drawable/bg_inputs_card"
+            android:padding="4dp"
+            app:endIconMode="password_toggle"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxStrokeColor="@color/primary"
+            app:boxBackgroundMode="outline"
+            app:layout_constraintTop_toBottomOf="@id/tilPassword"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
@@ -95,12 +173,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Confirmer mot de passe"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:background="@android:color/transparent"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Indicateurs -->
+        <!-- Indicateurs mot de passe -->
         <LinearLayout
-            android:id="@+id/constraintsLayout"
+            android:id="@+id/passwordConstraints"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -143,23 +223,28 @@
                 android:textAppearance="?attr/textAppearanceBody2"/>
         </LinearLayout>
 
-        <Button
+        <!-- Bouton Créer compte -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCreateAccount"
-            android:text="Créer un compte"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/constraintsLayout"
+            android:text="Créer un compte"
             android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@id/passwordConstraints"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:cornerRadius="24dp"
+            android:backgroundTint="@color/primary"/>
 
+        <!-- Lien vers Login -->
         <TextView
             android:id="@+id/tvAlreadyHaveAccount"
-            android:text="Déjà un compte ? Se connecter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Déjà un compte ? Se connecter"
+            android:textColor="@color/primary"
+            android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@id/btnCreateAccount"
-            android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
